@@ -1,35 +1,22 @@
 #include "philo.h"
-
-
-void init_simulation(t_rules *rules,int argc,char** argv)
+int	handle_one_philo(t_rules *rules)
 {
-    if(!(argc==5))
-    {
-        write(2, "\033[0;31mwrong arguments! there should be 5 arguments!\033[0m\n",58);
-        exit(1);
-    }
-    else
-    {
-        
-        rules->nb_philo= ff_atoi(argv[1]);
-        rules->time_to_die=ff_atoi(argv[2]);
-        rules->time_to_eat=ff_atoi(argv[3]);
-        rules->time_to_sleep=ff_atoi(argv[4]);
-        if (rules->nb_philo <= 0 || rules->time_to_die <= 0 || rules->time_to_eat <= 0 || rules->time_to_sleep <= 0)
-        {
-            write(2, "Error: All values must be positive integers\n", 44);
-            exit(1);
-        }
-    }
+	printf("0 1 is thinking\n");
+	usleep(rules->time_to_die * 1000);
+	printf("%d 1 died\n", rules->time_to_die);
+    ft_gc(0, 'f');
+	return (0);
 }
-
-int main(int argc,char** argv)
+int	main(int argc, char **argv)
 {
-    
-    t_rules rules;
-    is_it_null(argv,argc);
-    is_it_space(argv);
-    init_simulation(&rules,argc,argv);
-    
+	t_rules	rules;
 
+	is_it_null(argv, argc);
+	is_it_space(argv);
+	init_simulation(&rules, argc, argv);
+	if (rules.nb_philo == 1)
+		return (handle_one_philo(&rules));
+
+    ft_gc(0, 'f');
+    return (0);
 }
