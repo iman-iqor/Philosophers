@@ -214,4 +214,4 @@ Do not use sleep/eat/die values under 60ms unless you’re confident in your tim
 
 ---
 
-> Made with ❤️ at 1337 School.
+> Made with ❤️ at 1337 School by imiqor(iman iqor).
