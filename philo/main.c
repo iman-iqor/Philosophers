@@ -13,7 +13,8 @@ int	main(int argc, char **argv)
 
 	is_it_null(argv, argc);
 	is_it_space(argv);
-	init_simulation(&rules, argc, argv);
+	if(!init_simulation(&rules, argc, argv))
+		return 1;
 	if (rules.nb_philo == 1)
 		return (handle_one_philo(&rules));
 
