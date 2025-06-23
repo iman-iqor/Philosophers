@@ -33,6 +33,7 @@ typedef struct s_philo
 	int             meals_eaten;
 	long long       last_meal;
 	pthread_t       thread;
+	pthread_mutex_t meal_mutex;
 	pthread_mutex_t *left_fork;
 	pthread_mutex_t *right_fork;
 	struct s_rules  *rules; // pointer to shared rules
@@ -61,17 +62,17 @@ typedef struct s_gc
 }				t_gc;
 
 //********   UTILS   ********//
-int	ff_atoi(char *str);
+int	ff_atoi(char *str,int* error_flag);
 void	init_vars(t_atoi_state *vars);
-void is_it_alpha_error(void);
-void	check_int_overflow(long number);
+int is_it_alpha_error(void);
+int	check_int_overflow(long number);
 int	is_it_alpha(char *str, int *i);
 int ft_strlen(char* str);
-void	is_it_space(char **str);
-void	is_it_null(char **argv, int argc);
+int	is_it_space(char **str);
+int	is_it_null(char **argv, int argc);
 
 //********   INIT   ********//
-void init_simulation(t_rules *rules,int argc,char** argv);
+int init_simulation(t_rules *rules,int argc,char** argv);
 
 //********  GARBAGE COLLECTER  ********//
 void	* ft_gc(size_t n, char flag);
