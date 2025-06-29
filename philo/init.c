@@ -19,7 +19,7 @@ int	check_args(t_rules *rules, int argc, char **argv)
 	if (rules->nb_philo <= 0 || rules->time_to_die <= 0
 		|| rules->time_to_eat <= 0 || rules->time_to_sleep <= 0)
 	{
-		write(2, "Error: All values must be positive integers\n", 45);
+		write(2, "Error: All values must be greater than 0 and positive integers\n", 64);
 		return (0);
 	}
 	if (argc == 6)
@@ -32,9 +32,7 @@ int	check_args(t_rules *rules, int argc, char **argv)
 		}
 	}
 	else
-	{
 		rules->must_eat_count = -1;
-	}
 	if (error_flag)
 		return (0);
 	return (1);

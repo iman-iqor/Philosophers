@@ -7,7 +7,7 @@ int check_meals(t_rules *rules)
 	meals_count  = 0;
 	i = 0;
 
-	if(rules->must_eat_count==0)
+	if(rules->must_eat_count == -1)
 		return 0;
 	while (i < rules->nb_philo)
 	{
@@ -40,7 +40,7 @@ int check_death(t_rules* rules , int i)
 	last_meal = rules->philos[i].last_meal;
 	pthread_mutex_unlock(&rules->philos[i].meal_mutex);
 	current_time = get_curr_time_ms();
-	if((current_time - last_meal) >= rules->time_to_die)
+	if((current_time - last_meal) > rules->time_to_die)
 	{
 		pthread_mutex_lock(&rules->death_mutex);
 		if(rules->someone_died)

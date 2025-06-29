@@ -22,7 +22,7 @@ void	*philo_routine(void *arg)
 		pthread_mutex_lock(&philo->meal_mutex);
 		philo->last_meal = get_curr_time_ms();
 		pthread_mutex_unlock(&philo->meal_mutex);
-		print_status(philo, "has taken the forks");
+		print_status(philo, "has taken a fork");
 		print_status(philo, "is eating");
 		philo_sleep(philo, philo->rules->time_to_eat);
 		pthread_mutex_lock(&philo->meal_mutex);
@@ -59,11 +59,12 @@ void	take_forks(t_philo *philo)
 	left_fork = philo->id - 1;
 	right_fork = philo->id % philo->rules->nb_philo;
 	if (philo->id % 2 != 0)
-		usleep(200);
+		usleep(100);
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(&philo->rules->forks[right_fork]);
 		pthread_mutex_lock(&philo->rules->forks[left_fork]);
+
 	}
 	else
 	{
@@ -88,7 +89,7 @@ void release_forks(t_philo *philo)
 		pthread_mutex_unlock(&philo->rules->forks[right_fork]);
 	}
 	if(philo->id%2 == 0)
-		usleep(100);
+		usleep(200);
 
 }
 
