@@ -6,7 +6,6 @@ The *Philosophers* project is a simulation of the classic Dining Philosophers Pr
 
 ---
 
-
 philo/
 ├── Makefile
 ├── philo.h

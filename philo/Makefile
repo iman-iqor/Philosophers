@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = philo
-SRC = main.c utils.c routine.c init.c ft_gc.c
+SRC =  *.c
 RM = rm -f
 
 
